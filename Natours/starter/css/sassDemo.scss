@@ -16,10 +16,18 @@ nav {
   background-color: $color-primary;
 }
 
-.clearfix::after {
+@mixin clearFix {
   content: "";
   clear: both;
   display: table;
+}
+
+.clearfix::after {
+  @include clearFix;
+}
+
+@function devide($a, $b) {
+  @return $a/$b;
 }
 
 .navigation {
@@ -28,7 +36,8 @@ nav {
 
   li {
     display: inline-block;
-    margin-left: 30px;
+    margin-left: devide(60, 2) * 1px;
+    // margin-left: 30px;
 
     &:first-child {
       margin: 0;
@@ -55,7 +64,7 @@ nav {
   text-decoration: none;
   text-transform: uppercase;
   width: $width-button;
-  font: $color-text-light;
+  color: $color-text-light;
 }
 
 .btn-main {
